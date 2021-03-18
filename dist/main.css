@@ -1,0 +1,88 @@
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.page_wrapper {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  background-image: url(https://events.drupal.org/sites/default/files/DrupalCon_Skyline_only.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand .nav-link {
+  padding: 0;
+}
+
+.main_content {
+  margin: 0 1rem;
+}
+
+.main_content_container {
+  transition: opacity .25s ease-in-out;
+  opacity: 1;
+  flex: 1;
+}
+
+.media-oembed-content {
+  position: fixed;
+  left: 0;
+  height: 95vh;
+  width: 100%;
+}
+
+.main_content_container.is_changing {
+  opacity: 0;
+}
+
+.main_content__dates {
+  font-style: italic;
+  margin: 1em 0;
+}
+
+.main_content__dates__date {
+  margin: 0;
+}
+
+.main_content--page h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.main_content--article .main_content__body {
+  column-count: 3;
+  column-width: 180px;
+}
+
+.main_content__body p:first-child {
+  margin-top: 0;
+}
+
+.react_icon {
+  display: inline-block;
+  margin: 0 auto;
+  height: 30px;
+  animation: rotation 5s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
