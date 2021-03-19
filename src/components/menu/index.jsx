@@ -4,7 +4,7 @@ import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 function Item({ item, inDropdown = false }) {
   const ItemLink = inDropdown ? NavDropdown.Item : Nav.Link;
   return (
-    <ItemLink title={item.description} onSelect={() => { console.log(`Navigating to ${item.href}!`)}}>
+    <ItemLink title={item.description} onSelect={() => { console.log(`Navigating to "${item.link.href}"!`)}}>
       {item.title}
     </ItemLink>
   );
@@ -17,7 +17,7 @@ function Dropdown({ title, items }) {
     <NavDropdown title={title}>
       {items.map((item, key) => {
         // If the item is not a link, render it as text.
-        if (item.href === null) {
+        if (!item.link.href.length) {
           return (
             <NavDropdown.ItemText key={key}>{item.title}</NavDropdown.ItemText>
           );
@@ -34,11 +34,11 @@ function LinkItems({ items }) {
     // Therefore, we only render children in a dropdown if the item is
     // text-only. If it isn't, this condition won't pass and the item will be
     // rendered a link and its children will be ignored.
-    if (item.href === null) {
-      if (!!item.children) {
+    if (!item.link.href.length) {
+      if (!!item.children.length) {
         return <Dropdown key={key} title={item.title} items={item.children} />;
       }
-      return <Navbar.Text>{item.title}</Navbar.Text>;
+      return <Navbar.Text key={key}>{item.title}</Navbar.Text>;
     }
 
     return <Item key={key} item={item} />;
