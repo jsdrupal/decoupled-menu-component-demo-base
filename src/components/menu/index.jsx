@@ -3,8 +3,11 @@ import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 function Item({ item, inDropdown = false }) {
   const ItemLink = inDropdown ? NavDropdown.Item : Nav.Link;
+  const handleNavigation = () => {
+    console.log('Unimplemented navigation to:', item.link.href);
+  };
   return (
-    <ItemLink title={item.description} onSelect={() => { console.log(`Navigating to "${item.link.href}"!`)}}>
+    <ItemLink title={item.description} onClick={handleNavigation}>
       {item.title}
     </ItemLink>
   );
